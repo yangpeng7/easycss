@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "EasyCSS",
+  "description": "Chrome extension for getting CSS styles in an easy way",
+  "version": "1.0",
+  "action": {
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "css": ["styles.css"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["panel.html"],
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ]
+}

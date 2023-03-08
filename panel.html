@@ -1,0 +1,271 @@
+<html>
+  <!-- 加载此页面需要在manifest中配置web_accessible_resources -->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <head>
+    <style>
+      html {
+        margin: 0;
+        padding: 0;
+        background-image: linear-gradient(to right bottom, #e3fdf5, #ffe6fa);
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .easy-css-panel-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px 20px;
+      }
+
+      .easy-css-panel-header-icon {
+        width: 30px;
+        height: 30px;
+      }
+
+      .easy-css-panel-header-title {
+        font-size: 16px;
+        font-weight: 800;
+        color: #4e6e81;
+        cursor: move;
+      }
+
+      .easy-css-panel-header-close {
+        border: none;
+        background: url("./close.png") no-repeat;
+        width: 20px;
+        height: 20px;
+        background-size: 100%;
+        cursor: pointer;
+      }
+
+      /* 增加可点击区域 */
+      .easy-css-panel-header-close:after {
+        content: "";
+        position: absolute;
+        right: 10px;
+        top: 14px;
+        width: 40px;
+        height: 40px;
+        background: transparent;
+      }
+
+      .easy-css-panel-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      .easy-css-panel-content-box {
+        width: 280px;
+        height: 140px;
+        border: 1px dashed #f48484;
+        background-color: transparent;
+        position: relative;
+      }
+
+      .easy-css-panel-box-padding {
+        left: 40px;
+        right: 40px;
+        top: 30px;
+        bottom: 30px;
+        background-image: linear-gradient(
+          to right,
+          #f48484a0,
+          #f4848490,
+          #f4848430
+        );
+        position: absolute;
+      }
+
+      .easy-css-panel-margin-top {
+        position: absolute;
+        left: 50%;
+        top: 8px;
+        transform: translate(-50%);
+        font-size: 14px;
+      }
+
+      .easy-css-panel-margin-bottom {
+        position: absolute;
+        left: 50%;
+        bottom: 8px;
+        transform: translate(-50%);
+        font-size: 14px;
+      }
+
+      .easy-css-panel-margin-right {
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        transform: translate(0, -50%);
+        font-size: 14px;
+      }
+
+      .easy-css-panel-margin-left {
+        position: absolute;
+        top: 50%;
+        left: 8px;
+        transform: translate(0, -50%);
+        font-size: 14px;
+      }
+
+      .easy-css-panel-padding-top {
+        position: absolute;
+        left: 50%;
+        top: 34px;
+        transform: translate(-50%);
+        font-size: 14px;
+      }
+
+      .easy-css-panel-padding-bottom {
+        position: absolute;
+        left: 50%;
+        bottom: 34px;
+        transform: translate(-50%);
+        font-size: 14px;
+      }
+
+      .easy-css-panel-padding-right {
+        position: absolute;
+        top: 50%;
+        right: 58px;
+        transform: translate(0, -50%);
+        font-size: 14px;
+      }
+
+      .easy-css-panel-padding-left {
+        position: absolute;
+        top: 50%;
+        left: 58px;
+        transform: translate(0, -50%);
+        font-size: 14px;
+      }
+
+      .easy-css-panel-box-width-height {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -60px;
+        margin-top: -15px;
+        background-color: white;
+        width: 120px;
+        height: 30px;
+        line-height: 30px;
+        color: #000;
+        text-align: center;
+        font-size: 14px;
+      }
+
+      .easy-css-panel-code {
+        font-size: 16px;
+        width: 260;
+        white-space: nowrap;
+        overflow: auto;
+        background-color: #faf8f1;
+        margin-top: 40px;
+        padding: 10px;
+        color: #4e6e81;
+        border-radius: 5px;
+      }
+
+      .easy-css-panel-code-copy {
+        width: 280px;
+        height: 40px;
+        border: none;
+        border-radius: 20px;
+        font-size: 18px;
+        background: #f48484c0;
+        color: #4d455d;
+        margin-top: 40px;
+        cursor: pointer;
+        transition: 0.2s all;
+      }
+
+      .easy-css-panel-code-copy:hover {
+        background: #f48484;
+        color: white;
+        transition: 0.2s all;
+      }
+
+      .easy-css-panel-code-copy:active {
+        transform: scale(0.98);
+        box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="easy-css-panel-header">
+      <img class="easy-css-panel-header-icon" src="./icon-easy.png" />
+      <span class="easy-css-panel-header-title" id="easy-css-panel-header-title"
+        >EasyCSS</span
+      >
+      <button
+        id="easy-css-panel-header-close"
+        class="easy-css-panel-header-close"
+      ></button>
+    </div>
+    <div class="easy-css-panel-content">
+      <div id="easy-css-panel-content-box" class="easy-css-panel-content-box">
+        <div class="easy-css-panel-box-padding"></div>
+
+        <div
+          id="easy-css-panel-box-width-height"
+          class="easy-css-panel-box-width-height"
+        ></div>
+
+        <!-- margin values -->
+        <span
+          id="easy-css-panel-margin-top"
+          class="easy-css-panel-margin-top"
+        ></span>
+        <span
+          id="easy-css-panel-margin-right"
+          class="easy-css-panel-margin-right"
+        ></span>
+        <span
+          id="easy-css-panel-margin-left"
+          class="easy-css-panel-margin-left"
+        ></span>
+        <span
+          id="easy-css-panel-margin-bottom"
+          class="easy-css-panel-margin-bottom"
+        ></span>
+
+        <!-- padding values -->
+        <span
+          id="easy-css-panel-padding-top"
+          class="easy-css-panel-padding-top"
+        ></span>
+        <span
+          id="easy-css-panel-padding-right"
+          class="easy-css-panel-padding-right"
+        ></span>
+        <span
+          id="easy-css-panel-padding-left"
+          class="easy-css-panel-padding-left"
+        ></span>
+        <span
+          id="easy-css-panel-padding-bottom"
+          class="easy-css-panel-padding-bottom"
+        ></span>
+      </div>
+
+      <div
+        id="easy-css-panel-code"
+        class="easy-css-panel-code"
+        placeholder="styles"
+      ></div>
+
+      <button id="easy-css-panel-code-copy" class="easy-css-panel-code-copy">
+        Copy
+      </button>
+    </div>
+    <script src="panel.js"></script>
+  </body>
+</html>
