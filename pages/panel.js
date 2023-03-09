@@ -13,6 +13,12 @@ document
   .getElementById("easy-css-panel-code-copy")
   .addEventListener("click", handleCopyCode);
 
+document
+  .getElementById("easy-css-panel-header-icon")
+  .addEventListener("click", () => {
+    window.open("https://github.com/yangpeng7/easycss", "_blank");
+  });
+
 const showComputedStyle = (data) => {
   const marginTop = Math.trunc(data.marginTop.replace(/px/, ""));
   const marginRight = Math.trunc(data.marginRight.replace(/px/, ""));

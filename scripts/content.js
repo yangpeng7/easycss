@@ -43,7 +43,7 @@ chrome.runtime.onMessage.addListener((req, sender, sendResp) => {
     if (easyPanel == null) {
       easyPanel = document.createElement("iframe");
       easyPanel.id = easyPanelId;
-      easyPanel.src = chrome.runtime.getURL("panel.html");
+      easyPanel.src = chrome.runtime.getURL("../pages/panel.html");
       easyPanel.style.width = "100%";
       easyPanel.style.height = "100%";
       easyPanel.style.borderRadius = "20px";

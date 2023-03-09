@@ -1,10 +1,16 @@
 {
   "manifest_version": 3,
   "name": "EasyCSS",
-  "description": "Chrome extension for getting CSS styles in an easy way",
-  "version": "1.0",
+  "description": "Chrome extension for obtaining css styles in an easy way",
+  "version": "0.0.1",
   "action": {
-    "default_icon": "icon.png"
+    "default_icon": "images/icon-48.png"
+  },
+  "icons": {
+    "16": "images/icon-16.png",
+    "32": "images/icon-32.png",
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
   },
   "background": {
     "service_worker": "background.js"
@@ -12,13 +18,14 @@
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
-      "css": ["styles.css"],
-      "js": ["content.js"]
+      "css": ["css/styles.css"],
+      "js": ["scripts/content.js"],
+      "run_at": "document_start"
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["panel.html"],
+      "resources": ["/pages/panel.html"],
       "matches": ["http://*/*", "https://*/*"]
     }
   ]
