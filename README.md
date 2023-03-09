@@ -9,7 +9,7 @@ EasyCss is a Chrome extension for obtaining css styles in an easy way.
 - Fast copy css style code
 
 ## Usage
-
+![](./md/usage.gif)
 ## Install
 
 ### Install from Google Extension Store
