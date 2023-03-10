@@ -20,19 +20,6 @@ document
   });
 
 const showComputedStyle = (data) => {
-  const marginTop = Math.trunc(data.marginTop.replace(/px/, ""));
-  const marginRight = Math.trunc(data.marginRight.replace(/px/, ""));
-  const marginBottom = Math.trunc(data.marginBottom.replace(/px/, ""));
-  const marginLeft = Math.trunc(data.marginLeft.replace(/px/, ""));
-
-  const paddingTop = Math.trunc(data.paddingTop.replace(/px/, ""));
-  const paddingRight = Math.trunc(data.paddingRight.replace(/px/, ""));
-  const paddingBottom = Math.trunc(data.paddingBottom.replace(/px/, ""));
-  const paddingLeft = Math.trunc(data.paddingLeft.replace(/px/, ""));
-
-  const width = Math.trunc(data.width.replace(/px/, "")) || `${data.width} `;
-  const height = Math.trunc(data.height.replace(/px/, "")) || ` ${data.height}`;
-
   // margin
   let pmt = document.getElementById("easy-css-panel-margin-top");
   let pmr = document.getElementById("easy-css-panel-margin-right");
@@ -51,31 +38,41 @@ const showComputedStyle = (data) => {
   // code
   let ecpc = document.getElementById("easy-css-panel-code");
 
-  pmt.innerText = marginTop;
-  pmr.innerText = marginRight;
-  pmb.innerText = marginBottom;
-  pml.innerText = marginLeft;
+  pmt.innerText = replacePx(data.marginTop);
+  pmr.innerText = replacePx(data.marginRight);
+  pmb.innerText = replacePx(data.marginBottom);
+  pml.innerText = replacePx(data.marginLeft);
 
-  pat.innerText = paddingTop;
-  par.innerText = paddingRight;
-  pab.innerText = paddingBottom;
-  pal.innerText = paddingLeft;
+  pat.innerText = replacePx(data.paddingTop);
+  par.innerText = replacePx(data.paddingRight);
+  pab.innerText = replacePx(data.paddingBottom);
+  pal.innerText = replacePx(data.paddingLeft);
 
-  ecpbc.innerText = width + "x" + height;
+  ecpbc.innerText = replacePx(data.width) + " x " + replacePx(data.height);
 
-  ecpc.innerText = `width: ${data.width};
-    height: ${data.height};
-    margin:  ${data.marginTop} ${data.marginRight} ${data.marginBottom} ${
-    data.marginLeft
-  };
-    padding:  ${data.paddingTop} ${data.paddingRight} ${data.paddingBottom} ${
-    data.paddingLeft
-  };
+  ecpc.innerText = `width: ${truncValue(data.width)};
+    height: ${truncValue(data.height)};
+    margin:  ${truncValue(data.marginTop)} ${truncValue(
+    data.marginRight
+  )} ${truncValue(data.marginBottom)} ${truncValue(data.marginLeft)};
+    padding:  ${truncValue(data.paddingTop)} ${truncValue(
+    data.paddingRight
+  )} ${truncValue(data.paddingBottom)} ${truncValue(data.paddingLeft)};
     ${data.boxShadow ? `box-shadow:  ${data.boxShadow};` : ""}
     ${data.background ? `background:  ${data.background};` : ""}
     ${data.border ? `border:  ${data.border};` : ""}
     ${data.borderRadius ? `border-radius:  ${data.borderRadius};` : ""}`;
 };
+
+function replacePx(value) {
+  return value.includes("px") ? Math.trunc(value.replace(/px/, "")) : value;
+}
+
+function truncValue(value) {
+  return value.includes("px")
+    ? Math.trunc(value.replace(/px/, "")) + "px"
+    : value;
+}
 
 function handleClosePanel() {
   parent.window.postMessage({ msg: "EVENT_PANEL_CLOSE" }, "*");
