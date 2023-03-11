@@ -13,8 +13,13 @@ EasyCss is a Chrome extension for obtaining css styles in an easy way.
 ![](./md/usage.gif)
 ## Install
 
-### Install from Google Extension Store
-
 ### Load from local source code
+1. `git clone git@github.com:yangpeng7/easycss.git`
+2. open `chrome://extensions` in Chrome Browser
+3. open `developer mode` in the top-right corner
+4. click `Load unpacked` button
+5. choose directory from the first step cloned
+
+### Install from Google Extension Store
 
 ### Install from crx
