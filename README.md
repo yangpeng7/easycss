@@ -21,5 +21,6 @@ EasyCss is a Chrome extension for obtaining css styles in an easy way.
 5. choose directory from the first step cloned
 
 ### Install from Google Extension Store
-
+not support now
 ### Install from crx
+not support now
